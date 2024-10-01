@@ -9,7 +9,7 @@ contract BasicNftTest is Test {
     DeployBasicNft public deployer;
     BasicNft public basicNft;
     address public USER = makeAddr("user");
-    string public constant PUG = "https://ipfs.io/ipfs/QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png";
+    string public constant PUG = "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
 
     function setUp() public {
         deployer = new DeployBasicNft();
@@ -28,11 +28,5 @@ contract BasicNftTest is Test {
 
         assert(basicNft.balanceOf(USER) == 1);
         assertEq(PUG, basicNft.tokenURI(0));
-    }
-
-    function testMintNft() public {
-        string memory tokenUri = "https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq";
-        basicNft.mintNft(tokenUri);
-        assertEq(basicNft.tokenURI(0), tokenUri);
     }
 }
